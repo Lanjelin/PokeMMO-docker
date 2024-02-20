@@ -25,7 +25,7 @@ jobs:
         run: |
           mkdir -p /tmp/pokemmo
           wget -q https://pokemmo.com/download_file/1/ -O /tmp/pokemmo/PokeMMO-Client.zip
-          unzip -qq /tmp/pokemmo/PokeMMO-Client.zip -d /tmp/pokemmo
+          unzip /tmp/pokemmo/PokeMMO-Client.zip -d /tmp/pokemmo
           EXT_RELEASE=$(cat /tmp/pokemmo/revision.txt);
           if [ -z "${EXT_RELEASE}" ]; then
             echo "**** Can't retrieve external release, exiting ****"

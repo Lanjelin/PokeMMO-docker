@@ -24,9 +24,9 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.API_TOKEN }}
         run: |
           mkdir -p /tmp/pokemmo
-          wget https://pokemmo.com/download_file/1/ -O /tmp/pokemmo/PokeMMO-Client.zip
-          unzip /tmp/pokemmo/PokeMMO-Client.zip -d /tmp/pokemmo
-          EXT_RELEASE=$(cat /tmp/pokemmo/revision.txt)
+          wget -q https://pokemmo.com/download_file/1/ -O /tmp/pokemmo/PokeMMO-Client.zip
+          unzip -qq /tmp/pokemmo/PokeMMO-Client.zip -d /tmp/pokemmo
+          EXT_RELEASE=$(cat /tmp/pokemmo/revision.txt);
           if [ -z "${EXT_RELEASE}" ]; then
             echo "**** Can't retrieve external release, exiting ****"
             exit 1

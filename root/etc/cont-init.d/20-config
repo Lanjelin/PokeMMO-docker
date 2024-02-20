@@ -1,0 +1,4 @@
+#!/usr/bin/with-contenv bash
+chown -R "$PUID:$PGID" /pokemmo
+echo "$PUID" > /config/start1
+echo "$PGID" > /config/start2

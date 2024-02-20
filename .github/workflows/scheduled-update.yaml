@@ -1,0 +1,77 @@
+name: Scheduled Update
+
+on:
+  schedule:
+    - cron: "0 3 * * *"
+  push:
+    paths-ignore:
+      - "**.md"
+      - "**.yaml"
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  do-stuff-pretty-please:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check versions
+        id: check
+        env:
+          GITHUB_TOKEN: ${{ secrets.API_TOKEN }}
+        run: |
+          mkdir -p /tmp/pokemmo
+          wget https://pokemmo.com/download_file/1/ -O /tmp/pokemmo/PokeMMO-Client.zip
+          unzip /tmp/pokemmo/PokeMMO-Client.zip -d /tmp/pokemmo
+          EXT_RELEASE=$(cat /tmp/pokemmo/revision.txt)
+          if [ -z "${EXT_RELEASE}" ]; then
+            echo "**** Can't retrieve external release, exiting ****"
+            exit 1
+          fi
+          IMG_REV=$(cat Dockerfile | grep 'REVISION=' | sed -E 's/.*=([^"]+).*/\1/');
+          if [ -z "${IMAGE_VERSION}" ]; then
+            echo "**** Can't retrieve last pushed version, exiting ****"
+            exit 1
+          fi
+          if [ "${EXT_RELEASE}" == "${IMAGE_VERSION}" ]; then
+            echo "**** Version ${EXT_RELEASE} already pushed, exiting ****"
+            exit 0
+          fi
+          echo "**** New version ${EXT_RELEASE} found; old version was ${IMAGE_VERSION}. Triggering update ****"
+          sed -i "s/REVISION=${IMAGE_VERSION}/REVISION=${EXT_RELEASE}/g" Dockerfile
+          echo "update=true" >> "$GITHUB_OUTPUT"
+          echo "tag=${EXT_RELEASE}" >> "$GITHUB_OUTPUT"
+
+      - name: Commit Update
+        id: commit
+        if: 'steps.check.outputs.update'
+        run: |
+          git config user.name github-actions
+          git config user.email github-actions@github.com
+          git add .
+          git commit -m "Update to ${{ steps.check.outputs.tag }}"
+          git push
+
+      - name: Login to image repository
+        id: login
+        if: 'steps.check.outputs.update'
+        uses: docker/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ secrets.REGISTRY_USER }}
+          password: ${{ secrets.REGISTRY_PASSWORD }}
+
+      - name: Build and push
+        id: push
+        if: 'steps.check.outputs.update'
+        uses: docker/build-push-action@v4
+        with:
+          context: .
+          push: true
+          tags: |
+            ghcr.io/${{ secrets.REGISTRY_USER }}/pokemmo-docker:latest
+            ghcr.io/${{ secrets.REGISTRY_USER }}/pokemmo-docker:${{ steps.check.outputs.tag }}
+          labels: maintainer=${{ secrets.REGISTRY_USER }}

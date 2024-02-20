@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<Container version="2">
+  <Name>PokeMMO</Name>
+  <Repository>ghcr.io/lanjelin/pokemmo-docker:latest</Repository>
+  <Registry/>
+  <Network>bridge</Network>
+  <MyIP/>
+  <Shell>bash</Shell>
+  <Privileged>false</Privileged>
+  <Support/>
+  <Project/>
+  <Overview>PokeMMO directly in your browser.&#xD;
+Container based on Docker Baseimage KasmVNC by linuxserver.&#xD;
+&#xD;
+Under no circumstances expose this container to anything but your local machine, unless you really know what you're doing.&#xD;
+Failure to pratice proper security could lead to compromise of account.&#xD;
+&#xD;
+It's against PokeMMO Code of Conduct(4d.) to run in any form of virtual machine, but the client seems to be unable to detect it as long as docker is not run in a VM itself. This image comes with no guarantee however, and all use is at your own risk.&#xD;
+&#xD;
+Current Required Compatible ROMS: Black/White&#xD;
+Current Optional Content Compatible ROMS: Fire Red, Emerald, Platinum, HeartGold/SoulSilver</Overview>
+  <Category>Other:</Category>
+  <WebUI>http://[IP]:[PORT:3000]</WebUI>
+  <TemplateURL>https://raw.githubusercontent.com/linuxserver/templates/master/unraid/mullvad-browser.xml</TemplateURL>
+  <Icon>https://pokemmo.com/build/images/opengraph.ce52eb8f.png</Icon>
+  <ExtraParams>--shm-size=1gb</ExtraParams>
+  <PostArgs/>
+  <CPUset/>
+  <DateInstalled>1708423149</DateInstalled>
+  <DonateText>Donations</DonateText>
+  <DonateLink>https://www.linuxserver.io/donate</DonateLink>
+  <Requires>Unraid should not be run in a VM (eg. Proxmox).&#xD;
+&#xD;
+Current Required Compatible ROMS: Black/White&#xD;
+Current Optional Content Compatible ROMS: Fire Red, Emerald, Platinum, HeartGold/SoulSilver</Requires>
+  <Config Name="WebUI" Target="3000" Default="3000" Mode="tcp" Description="PokeMMO GUI." Type="Port" Display="always" Required="true" Mask="false">3021</Config>
+  <Config Name="WebUI HTTPS" Target="3001" Default="3001" Mode="tcp" Description="PokeMMO GUI HTTPS." Type="Port" Display="always" Required="true" Mask="false">3022</Config>
+  <Config Name="Enable GPU Acceleration " Target="" Default="" Mode="" Description="DRI3 GPU Acceleration" Type="Device" Display="always" Required="false" Mask="false">/dev/dri:/dev/dri</Config>
+  <Config Name="Specify GPU device" Target="DRINODE" Default="/dev/dri/renderD128" Mode="" Description="If mounting in /dev/dri for DRI3 GPU Acceleration allows you to specify the device to use IE /dev/dri/renderD128" Type="Variable" Display="always" Required="false" Mask="false">/dev/dri/renderD128</Config>
+  <Config Name="Pokemon Roms" Target="/pokemmo/roms" Default="/mnt/user/appdata/pokemmo/roms" Mode="rw" Description="Required: Black/White&#13;&#10;Optional: Fire Red, Emerald, Platinum, HeartGold/SoulSilver" Type="Path" Display="always" Required="false" Mask="false">/mnt/user/appdata/pokemmo/roms</Config>
+  <Config Name="Config" Target="/pokemmo/config" Default="/mnt/user/appdata/pokemmo/config" Mode="rw" Description="" Type="Path" Display="advanced" Required="true" Mask="false">/mnt/user/appdata/pokemmo/config</Config>
+  <Config Name="PUID" Target="PUID" Default="99" Mode="{3}" Description="" Type="Variable" Display="advanced" Required="true" Mask="false">99</Config>
+  <Config Name="PGID" Target="PGID" Default="100" Mode="{3}" Description="" Type="Variable" Display="advanced" Required="true" Mask="false">100</Config>
+  <Config Name="UMASK" Target="UMASK" Default="022" Mode="{3}" Description="" Type="Variable" Display="advanced" Required="false" Mask="false">022</Config>
+</Container>

@@ -7,7 +7,7 @@
 Container based on [Docker Baseimage KasmVNC by linuxserver](https://github.com/linuxserver/docker-baseimage-kasmvnc).  
 
 Under no circumstances expose this container to anything but your local machine, unless you really know what you're doing.  
-Failure to pratice proper security could lead to compromize of account. 
+Failure to pratice proper security could lead to compromise of account. 
 
 It's against PokeMMO [Code of Conduct](https://pokemmo.com/en/code_of_conduct/)(4d.) to run in any form of virtual machine, but the client seems to be unable to detect it as long as docker is not run in a VM itself. 
 This image comes with no guarantee however, and all use is at your own risk.  

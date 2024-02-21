@@ -72,6 +72,6 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/${{ secrets.REGISTRY_USER }}/pokemmo-docker:latest
             ghcr.io/${{ secrets.REGISTRY_USER }}/pokemmo-docker:${{ steps.check.outputs.tag }}
+            ghcr.io/${{ secrets.REGISTRY_USER }}/pokemmo-docker:latest
           labels: maintainer=${{ secrets.REGISTRY_USER }}

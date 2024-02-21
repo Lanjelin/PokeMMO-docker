@@ -37,6 +37,7 @@ services:
     volumes:
       - /path/to/config:/pokemmo/config
       - /path/to/roms:/pokemmo/roms
+      - /path/to/mods:/pokemmo/data/mods
     devices:
       - /dev/dri:/dev/dri # enable GPU Accel
     restart: unless-stopped
@@ -55,6 +56,7 @@ docker run -d \
   -p 3001:3001 \
   -v /path/to/config:/pokemmo/config \
   -v /path/to/roms:/pokemmo/roms \
+  -v /path/to/mods:/pokemmo/data/mods \
   --device /dev/dri:/dev/dri \
   --restart unless-stopped \
   ghcr.io/lanjelin/pokemmo-docker:latest

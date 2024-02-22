@@ -2,13 +2,13 @@
 <Container version="2">
   <Name>PokeMMO</Name>
   <Repository>ghcr.io/lanjelin/pokemmo-docker:latest</Repository>
-  <Registry/>
+  <Registry>https://github.com/Lanjelin/PokeMMO-docker</Registry>
   <Network>bridge</Network>
   <MyIP/>
   <Shell>bash</Shell>
   <Privileged>false</Privileged>
-  <Support/>
-  <Project/>
+  <Support>https://github.com/Lanjelin/PokeMMO-docker/issues</Support>
+  <Project>https://pokemmo.com/en/</Project>
   <Overview>PokeMMO directly in your browser.&#xD;
 Container based on Docker Baseimage KasmVNC by linuxserver.&#xD;
 &#xD;
@@ -21,14 +21,14 @@ Current Required Compatible ROMS: Black/White&#xD;
 Current Optional Content Compatible ROMS: Fire Red, Emerald, Platinum, HeartGold/SoulSilver</Overview>
   <Category>Other:</Category>
   <WebUI>http://[IP]:[PORT:3000]</WebUI>
-  <TemplateURL>https://raw.githubusercontent.com/linuxserver/templates/master/unraid/mullvad-browser.xml</TemplateURL>
+  <TemplateURL>https://raw.githubusercontent.com/Lanjelin/PokeMMO-docker/main/my-PokeMMO.xml</TemplateURL>
   <Icon>https://pokemmo.com/build/images/opengraph.ce52eb8f.png</Icon>
   <ExtraParams>--shm-size=1gb</ExtraParams>
   <PostArgs/>
   <CPUset/>
-  <DateInstalled>1708423149</DateInstalled>
-  <DonateText>Donations</DonateText>
-  <DonateLink>https://www.linuxserver.io/donate</DonateLink>
+  <DateInstalled></DateInstalled>
+  <DonateText></DonateText>
+  <DonateLink></DonateLink>
   <Requires>Unraid should not be run in a VM (eg. Proxmox).&#xD;
 &#xD;
 Current Required Compatible ROMS: Black/White&#xD;

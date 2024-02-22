@@ -62,6 +62,14 @@ docker run -d \
   ghcr.io/lanjelin/pokemmo-docker:latest
 ```
 
+### UnRaid
+I've inlcuded a template to make it a fast process setting this up in UnRaid.  
+Simply run the following to download the template, then navigate to your Docker-tab, click Add Container, and find PokeMMO in the Template-dropdown.
+
+```bash
+wget -O /boot/config/plugins/dockerMan/templates-user/my-PokeMMO.xml https://raw.githubusercontent.com/Lanjelin/PokeMMO-docker/main/my-PokeMMO.xml
+```
+
 ## Application Setup
 
 The application can be accessed at:

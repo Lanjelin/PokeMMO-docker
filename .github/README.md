@@ -7,7 +7,7 @@
 Container based on [Docker Baseimage KasmVNC by linuxserver](https://github.com/linuxserver/docker-baseimage-kasmvnc).  
 
 Under no circumstances expose this container to anything but your local machine, unless you really know what you're doing.  
-Failure to pratice proper security could lead to compromise of account. 
+Failure to practice proper security could lead to compromise of account. 
 
 It's against PokeMMO [Code of Conduct](https://pokemmo.com/en/code_of_conduct/)(4d.) to run in any form of virtual machine, but the client seems to be unable to detect it as long as docker is not run in a VM itself. 
 This image comes with no guarantee however, and all use is at your own risk.  
@@ -67,7 +67,7 @@ I've inlcuded a template to make it a fast process setting this up in UnRaid.
 Simply run the following to download the template, then navigate to your Docker-tab, click Add Container, and find PokeMMO in the Template-dropdown.
 
 ```bash
-wget -O /boot/config/plugins/dockerMan/templates-user/my-PokeMMO.xml https://raw.githubusercontent.com/Lanjelin/PokeMMO-docker/main/my-PokeMMO.xml
+wget -O /boot/config/plugins/dockerMan/templates-user/my-PokeMMO.xml https://raw.githubusercontent.com/Lanjelin/docker-templates/main/lanjelin/pokemmo.xml
 ```
 
 ## Application Setup

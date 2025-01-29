@@ -4,6 +4,7 @@ LABEL maintainer="lanjelin"
 
 ENV TITLE=PokeMMO-Docker
 ENV REVISION=28366
+ENV XDG_SESSION_TYPE=x11
 
 # add local files
 COPY /root /

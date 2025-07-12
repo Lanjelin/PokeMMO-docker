@@ -3,7 +3,7 @@ FROM ghcr.io/linuxserver/baseimage-kasmvnc:ubuntujammy
 LABEL maintainer="lanjelin"
 
 ENV TITLE=PokeMMO-Docker
-ENV REVISION=29566
+ENV REVISION=29602
 ENV XDG_SESSION_TYPE=x11
 
 # add local files
